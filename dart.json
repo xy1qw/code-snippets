@@ -1,0 +1,207 @@
+{
+    "Сlass from file name": {
+        "prefix": "class",
+        "body": [
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  $0",
+            "}"
+        ]
+    },
+    "Enum from file name": {
+        "prefix": "enum",
+        "body": [
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  $0",
+            "}"
+        ]
+    },
+    "Part template": {
+        "prefix": [
+            "part",
+            "pt"
+        ],
+        "body": "part '${TM_FILENAME_BASE}.$0.dart';"
+    },
+    "G part template": {
+        "prefix": [
+            "partg",
+            "ptg"
+        ],
+        "body": "part '${TM_FILENAME_BASE}.g.dart';"
+    },
+    "Freezed part template": {
+        "prefix": [
+            "partf",
+            "ptf"
+        ],
+        "body": "part '${TM_FILENAME_BASE}.freezed.dart';"
+    },
+    "Freezed class": {
+        "prefix": [
+            "freezed",
+            "frz"
+        ],
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE}.freezed.dart';",
+            "",
+            "@freezed",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} with _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    $0",
+            "  }) = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+            "}"
+        ]
+    },
+    "Freezed class with json": {
+        "prefix": [
+            "freezedj",
+            "frzj"
+        ],
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE}.freezed.dart';",
+            "part '${TM_FILENAME_BASE}.g.dart';",
+            "",
+            "@freezed",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} with _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    $0",
+            "  }) = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+            "",
+            "  factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.fromJson(Map<String, dynamic> json) =>",
+            "      _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}FromJson(json);",
+            "}"
+        ],
+        "description": "Generate freezed json template"
+    },
+    "Serializable class": {
+        "prefix": "json",
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE}.g.dart';",
+            "",
+            "@JsonSerializable(createFactory: true, createToJson: true)",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  $0",
+            "",
+            "  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    ",
+            "  });",
+            "",
+            "  factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.fromJson(Map<String, dynamic> json) =>",
+            "      _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}FromJson(json);",
+            "",
+            "  Map<String, dynamic> toJson() => _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}ToJson(this);",
+            "}"
+        ]
+    },
+    "Serializable from json class": {
+        "prefix": [
+            "jsonf",
+            "jsf"
+        ],
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE}.g.dart';",
+            "",
+            "@JsonSerializable(createFactory: true, createToJson: false)",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  $0",
+            "",
+            "  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    ",
+            "  });",
+            "",
+            "  factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.fromJson(Map<String, dynamic> json) =>",
+            "      _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}FromJson(json);",
+            "}"
+        ]
+    },
+    "Serializable to json class": {
+        "prefix": [
+            "jsont",
+            "jst"
+        ],
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE}.g.dart';",
+            "",
+            "@JsonSerializable(createFactory: false, createToJson: true)",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  $0",
+            "",
+            "  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    ",
+            "  });",
+            "",
+            "  Map<String, dynamic> toJson() => _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}ToJson(this);",
+            "}"
+        ],
+        "description": "Generate json serializable template"
+    },
+    "Widget": {
+        "prefix": [
+            "lesswidget",
+            "slwdt"
+        ],
+        "body": [
+            "import 'package:flutter/material.dart';",
+            "",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends StatelessWidget {",
+            "  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    $0",
+            "    super.key,",
+            "  });",
+            "",
+            "  @override",
+            "  Widget build(BuildContext context) => const SizedBox.shrink();",
+            "}"
+        ]
+    },
+    "Widget with state": {
+        "prefix": [
+            "fulwidget",
+            "flwdt"
+        ],
+        "body": [
+            "import 'package:flutter/material.dart';",
+            "",
+            "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends StatefulWidget {",
+            "  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({",
+            "    $0",
+            "    super.key,",
+            "  });",
+            "",
+            "  @override",
+            "  State<${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}> createState() => _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}State();",
+            "}",
+            "",
+            "class _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}State extends State<${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}> {",
+            "  @override",
+            "  Widget build(BuildContext context) => const SizedBox.shrink();",
+            "}"
+        ]
+    },
+    "Retrofit client template": {
+        "prefix": [
+            "retrofit",
+            "rtf"
+        ],
+        "body": [
+            "import 'package:retrofit/retrofit.dart';",
+            "",
+            "part '${TM_FILENAME_BASE}.g.dart';",
+            "",
+            "@RestApi()",
+            "abstract class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "  factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}(Dio dio) = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+            "}"
+        ]
+    }
+}
